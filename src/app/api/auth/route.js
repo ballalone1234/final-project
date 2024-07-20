@@ -1,5 +1,5 @@
 // pages/api/data.js
-import { db ,auth } from '../../../../firebaseConfig';
+import { db ,auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export async function GET(request) {
