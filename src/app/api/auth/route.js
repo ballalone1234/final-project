@@ -1,6 +1,8 @@
 // pages/api/data.js
+import { NextResponse } from 'next/server';
 import { db ,auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import errors from '@/util/errors';
 
 export async function GET(request) {
   const searchParams = request.nextUrl.searchParams;
@@ -8,14 +10,10 @@ export async function GET(request) {
   const password = searchParams.get('password');
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    return Response.json({
-      message: `Hello World`
-    });
+    return NextResponse.json({ message: 'Successfully logged in' });
   }
   catch (error) {
-    return Response.json({
-      message: error.message
-    });
+    return NextResponse.json({ error: errors[error.code] }, { status: 401 })
   }
   
 }
