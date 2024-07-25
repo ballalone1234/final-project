@@ -37,7 +37,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div >
       <InputCustom
         topLeftLabel="Email"
         bottomLeftLabel="Bottom Left"
